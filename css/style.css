@@ -1,0 +1,1644 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100vh;
+  font-family: 'Baloo 2', cursive;
+  overflow-x: hidden;
+  cursor: url('../fotos/lapiz.png'), pointer;
+}
+
+/* ------------------------------------------ Estilos para la navbar ------------------------------------------ */
+nav {
+background-color: #fdf98c;
+box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+position: fixed;
+top: 0;
+width: 100%;
+height: 80px; 
+z-index: 1000;
+display: flex;
+align-items: center;
+}
+
+nav ul {
+width: 100%;
+list-style: none;
+display: flex;
+justify-content: flex-end;
+align-items: center;
+padding: 0 20px;
+}
+
+nav li {
+height: 80px; 
+display: flex;
+align-items: center;
+}
+
+.botones-seccion {
+margin-top: 40px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
+padding-bottom: 20px;
+}
+
+nav a {
+height: 100%;
+padding: 0 30px;
+text-decoration: none;
+display: flex;
+align-items: center;
+color: rgb(52, 51, 57);
+transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+background-color: #9FD1F0;
+}
+
+nav li:first-child {
+margin-right: auto;
+}
+
+/* Estilos para la navbar que se hace pequeña */
+.sidebar {
+position: fixed;
+top: 0;
+right: 0;
+height: 100vh;
+width: 250px;
+z-index: 9999;
+background-color: rgba(225, 255, 255, 0.2);
+backdrop-filter: blur(10px);
+box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+display: none;
+flex-direction: column;
+align-items: flex-start;
+justify-content: flex-start;
+}
+
+.sidebar li {
+width: 100%;
+}
+
+.sidebar a {
+width: 100%;
+}
+
+.logo-img {
+height: 80px;
+width: 80px;
+border-radius: 73%;
+object-fit: cover;
+}
+
+.menu-boton {
+display: none;
+}
+
+/* Dropdown styles */
+.nav-dropdown {
+position: relative;
+height: 80px;
+display: flex;
+align-items: center;
+}
+
+.nav-dropdown-contenido{
+display: none;
+position: absolute;
+top: 100%;
+left: 0;
+background-color: #fdf98c;
+min-width: 200px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1001;
+border-radius: 0 0 5px 5px;
+overflow: hidden;
+}
+
+/* Desktop hover */
+.hideOnMobile.nav-dropdown:hover .nav-dropdown-contenido {
+display: block;
+}
+
+/* Mobile / celular dropdown estilos */
+.sidebar .nav-dropdown {
+height: auto;
+width: 100%;
+flex-direction: column;
+}
+
+.sidebar .nav-dropdown-contenido {
+position: static;
+background-color: rgba(159, 209, 240, 0.2);
+box-shadow: none;
+padding-left: 30px;
+display: none;
+width: 100%;
+}
+
+.nav-dropdown-contenido a {
+color: rgb(52, 51, 57);
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+height: auto;
+}
+
+.nav-dropdown-contenido a:hover {
+background-color: #9FD1F0;
+}
+
+/* Estilo para que la pagina sea responsiva */
+@media(max-width: 800px) {
+.hideOnMobile {
+    display: none;
+}
+
+.menu-boton {
+    display: block;
+}
+
+.sidebar .nav-dropdown.active .nav-dropdown-contenido {
+  display: block !important;
+
+}
+
+.nav-dropdown {
+    height: auto;
+}
+}
+
+@media(max-width: 800px) {
+.nav-dropdown {
+    flex-direction: column;
+}
+
+.nav-dropdown > a {
+    width: 100%;
+}
+
+.sidebar .nav-dropdown-contenido {
+    display: none;
+    overflow: visible;
+    max-height: none;
+    width: 100%;
+}
+
+.sidebar .nav-dropdown.active > .nav-dropdown-contenido {
+    display: block !important;
+}
+}
+
+/* ------------------------------------------ Estilos para la index ------------------------------------------ */
+.fondo-cover {
+  background-image: url('../fotos/fondo_un.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 80px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.contenido-central {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 800px;
+  width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-size: 1.2rem;
+  color: #222;
+  margin: 20px auto;
+}
+
+/* Estilos para los botones de colores (suma, retsa, multi, division */
+.botones-seccion button {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.botones-seccion button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.boton-rojo {
+  background-color: #e74c3c;
+}
+
+.boton-verde {
+  background-color: #27ae60;
+}
+
+.boton-azul {
+  background-color: #2980b9;
+}
+
+.boton-amarillo {
+  background-color: #f1c40f;
+  color: #333;
+}
+
+/* Estilos la seccion informativa en la pagina index arriba de la foto de fondo */
+.seccion-informativa {
+  background-color: rgb(180, 212, 243);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 90%;
+  margin: 60px auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+  position: relative;
+  z-index: 10;
+  line-height: 1.6;
+}
+
+.pagina-contenido {
+  position: relative;
+  background-color: #f5f5f5;
+  padding: 40px 0;
+  padding-bottom: 60px;
+}
+/* ------------------------------------------ Estilos para la multi.html ------------------------------------------ */
+.mate-contenedor {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 90%;
+  margin: 60px auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+  position: relative;
+  z-index: 10;
+  line-height: 1.6;
+ 
+}
+
+.mate-titulo {
+  color: #2c3e50;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  position: relative;
+  font-family: 'Baloo 2', cursive;
+}
+
+.mate-titulo::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #9FD1F0, #fdf98c);
+  border-radius: 2px;
+}
+
+.math-description {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #4a5568;
+  margin-bottom: 30px;
+}
+
+.ejemplo-seccion {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid #9FD1F0;
+}
+
+.ejemplo-titulo {
+  color: #2980b9;
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-family: 'Baloo 2', cursive;
+}
+
+.ejemplo-texto {
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin-bottom: 20px;
+}
+
+.mate-ecuacion {
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 20px 0;
+  color: #e74c3c;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+
+.foto_ecuacion{
+  font-size: 2rem;
+  text-align: center;
+  margin: 25px 0;
+  color: #2c3e50;
+  font-weight: bold;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px dashed #9FD1F0;
+}
+.manzanita {
+  width: 80px;       
+  height: auto;
+  margin: 0 10px;    
+  vertical-align: middle;
+}
+
+
+.tablas-seccion {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.tablas-intro {
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin-bottom: 25px;
+}
+
+.tabla-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: linear-gradient(135deg, #9FD1F0 0%, #2980b9 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  height: 60px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+  font-family: 'Baloo 2', cursive;
+}
+
+.tabla-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #2980b9 0%, #9FD1F0 100%);
+}
+
+.tabla-btn:active {
+  transform: scale(0.98);
+}
+
+/* Estilos para las cartas flipeantes de las tablaa de multiplicar */
+.tablas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 150px;
+  height: 310px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  font-weight: bold;
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.flip-card-front {
+  background-color: #9FD1F0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+
+.flip-card-back {
+  background-color: #e74c3c;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.multiplicar {
+  width: 98px;
+  height: auto;
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Diseno responsivo */
+@media (max-width: 768px) {
+  .tablas-grid {
+      grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .mate-contenedor {
+      padding: 20px;
+      margin: 30px auto;
+  }
+  
+  .mate-titulo {
+      font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tablas-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .mate-titulo {
+      font-size: 1.6rem;
+  }
+  
+  .mate-ecuacion {
+      font-size: 1.8rem;
+  }
+  
+  .big-equation {
+      font-size: 1.6rem;
+  }
+}
+
+/* ------------------------------------------ Estilos para la suma.html ------------------------------------------ */
+.mate-contenedor-suma {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 90%;
+  margin: 60px auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+  position: relative;
+  z-index: 10;
+  line-height: 1.6;
+ 
+}
+
+.ejemplo-seccion-suma {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid #d95560;
+}
+
+.ejemplo-titulo-suma {
+  color: #e12232;
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-family: 'Baloo 2', cursive;
+}
+
+.ejemplo-texto-suma{
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin-bottom: 20px;
+}
+
+.mate-ecuacion-suma {
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 20px 0;
+  color: #e74c3c;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+
+.ejemplo-seccion-suma-color {
+  background-color: #FEE5E6;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid #d95560;
+}
+.ejemplo-titulo-suma-color {
+  color: #ed7373;
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-family: 'Baloo 2', cursive;
+}
+
+.ejemplo-texto-suma-color{
+  font-size: 1.1rem;
+  color: #3b4049;
+  margin-bottom: 20px;
+}
+
+.suma {
+  width: 200px;      
+  height: auto;
+  margin: 0 10px;    
+  vertical-align: middle;
+}
+
+/* Estilos generales del carrusel en la pagina suma.html */
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  margin: 2rem auto;
+  font-family: "Baloo 2", cursive;
+}
+
+.carousel__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel__track {
+  display: flex;
+  transition: transform 0.9s ease;
+  will-change: transform;
+}
+
+/* Botones del carousel */
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 5;
+  color: #ff595a;
+  user-select: none;
+  transition: color 0.3s;
+}
+
+.carousel__btn:hover {
+  color: #ff3838;
+}
+
+#prev { left: -2.5rem; }
+#next { right: -2.5rem; }
+
+/* Estructura de la carta  */
+.card {
+  flex: 0 0 100%;
+  padding: 0.5rem;
+  perspective: 1000px;
+  box-sizing: border-box;
+}
+
+.card__inner {
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+  transform-style: preserve-3d;
+  transition: transform 2s cubic-bezier(0.4, 0.2, 0.2, 1);
+  cursor: pointer;
+}
+
+.card.is-flipped .card__inner {
+  transform: rotateY(180deg);
+}
+
+/* Caras de la carta (frente y reverso) */
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.card__face--front {
+  background: #fffdf9;
+}
+
+.card__face--back {
+  background: #fef997;
+  transform: rotateY(180deg);
+}
+
+/*  Contenido de la carta  */
+.card__title {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #333;
+}
+
+.card__body {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Estilos para las imágenes y elementos de dulces */
+.dulces-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.dulces-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dulces_foto {
+  width: 70px;
+  height: auto;
+  margin: 0 10px;
+  transition: transform 0.3s;
+}
+
+.dulces_foto:hover {
+  transform: scale(1.1);
+}
+
+.operator {
+  font-size: 1.8rem;
+  margin: 0 0.5rem;
+  color: #ff595a;
+}
+
+/* Efecto hover para mejor interactividad */
+.card__inner:hover .card__face--front {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Responsive adjustments  */
+@media (max-width: 480px) {
+  .carousel {
+    max-width: 320px;
+  }
+  
+  .card__inner {
+    min-height: 280px;
+  }
+  
+  .dulces_foto {
+    width: 60px;
+  }
+  
+  .carousel__btn {
+    font-size: 2rem;
+  }
+  
+  #prev { left: -2rem; }
+  #next { right: -2rem; }
+}
+
+/* ------------------------------------------Estilos para resta.html ------------------------------------------ */
+.mate-contenedor-resta {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 90%;
+  margin: 60px auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+  position: relative;
+  z-index: 10;
+  line-height: 1.6;
+}
+
+.ejemplo-seccion-resta {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid #89dc63;
+}
+
+.ejemplo-titulo-resta {
+  color: #8BC34A;
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-family: 'Baloo 2', cursive;
+}
+
+.ejemplo-texto-resta{
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin-bottom: 20px;
+}
+
+.ejemplo-seccion-resta-color {
+  background-color: #edffc4;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid  #89dc63;
+}
+.ejemplo-titulo-resta-color {
+  color: #8BC34A;
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-family: 'Baloo 2', cursive;
+}
+
+.ejemplo-texto-resta-color{
+  font-size: 1.1rem;
+  color: #3b4049;
+  margin-bottom: 20px;
+}
+
+.foto_ecuacion_suma{
+  font-size: 2rem;
+  text-align: center;
+  margin: 25px 0;
+  color: #2c3e50;
+  font-weight: bold;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px dashed #eba7a4;
+}
+
+.foto_ecuacion_resta{
+  font-size: 2rem;
+  text-align: center;
+  margin: 25px 0;
+  color: #2c3e50;
+  font-weight: bold;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px dashed #b4d3ac;
+}
+
+/* ------------------------------------------ Estilos para division.html ------------------------------------------*/
+.mate-contenedor-division {
+background-color: rgba(255, 255, 255, 0.9);
+padding: 30px;
+border-radius: 15px;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+max-width: 800px;
+width: 90%;
+margin: 60px auto;
+text-align: center;
+font-size: 1.1rem;
+color: #333;
+position: relative;
+z-index: 10;
+line-height: 1.6;
+}
+
+.ejemplo-seccion-division {
+background-color: rgba(255, 255, 255, 0.7);
+padding: 25px;
+border-radius: 10px;
+margin-bottom: 30px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+border-left: 5px solid #FDD835;
+}
+
+.ejemplo-titulo-division {
+color: #FDD835;
+font-size: 1.4rem;
+margin-top: 0;
+margin-bottom: 15px;
+font-family: 'Baloo 2', cursive;
+}
+
+.ejemplo-texto-division{
+font-size: 1.1rem;
+color: #4a5568;
+margin-bottom: 20px;
+}
+
+.ejemplo-seccion-division-color {
+background-color: #fffab1;
+padding: 25px;
+border-radius: 10px;
+margin-bottom: 30px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+border-left: 5px solid #FDD835
+}
+.ejemplo-titulo-division-color {
+color: #c8a408;
+font-size: 1.4rem;
+margin-top: 0;
+margin-bottom: 15px;
+font-family: 'Baloo 2', cursive;
+}
+
+.ejemplo-texto-divison-color{
+font-size: 1.1rem;
+color: #3b4049;
+margin-bottom: 20px;
+}
+
+.foto_ecuacion_division{
+font-size: 2rem;
+text-align: center;
+margin: 25px 0;
+color: #2c3e50;
+font-weight: bold;
+padding: 15px;
+background: rgba(255, 255, 255, 0.7);
+border-radius: 8px;
+display: inline-block;
+width: 100%;
+box-sizing: border-box;
+border: 2px dashed #f3f336;
+}
+
+/* Estilos los botones corregir en todas las paginas */
+.ejercicio {
+margin: 10px 0;
+font-size: 1.1em;
+}
+
+.ejercicio input {
+width: 70px;
+font-size: 1em;
+text-align: center;
+margin-left: 10px;
+}
+
+.boton-corregir {
+margin-top: 20px;
+margin-right: 10px;
+padding: 10px 20px;
+font-size: 1.1em;
+background-color: #4CAF50;
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.boton-corregir:hover  { background-color: #45a049; transform: scale(1.05); }
+.boton-corregir:active { background-color: #3e8e41; transform: scale(1);   }
+.respuesta-correcta {
+font-weight: bold;
+font-size: 1.1em;
+margin-left: 10px;
+color: red;
+}
+
+.division-btn {
+margin: 5px;
+padding: 10px 20px;
+font-size: 18px;
+cursor: pointer;
+}
+
+.ejercicio-pizza img {
+display: block;
+margin: 10px auto;
+}
+
+.ejercicio-pizza {
+text-align: center;
+margin-top: 40px;
+}
+
+.pizza-img {
+width: 220px;
+margin: 20px auto;
+display: block;
+}
+
+.pizza-input {
+width: 100px;
+padding: 8px;
+font-size: 18px;
+text-align: center;
+border-radius: 8px;
+}
+
+.feedback-text.ok { color: #2a9d8f; font-weight: bold; }
+.feedback-text.ko { color: #e63946; font-weight: bold; }
+
+/*------------------------------------------ Estilos re utilizables en todas html ------------------------------------------ */
+/* reutilizamos .division-btn, .bien, .mal de suma.js */
+.mate-contenedor-ola {
+background-color: rgba(255, 255, 255, 0.95);
+padding: 40px 30px;
+border-radius: 18px;
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+max-width: 800px;
+width: 90%;
+margin: 60px auto;
+text-align: center;
+font-size: 1.2rem;
+color: #2d3748;
+position: relative;
+z-index: 10;
+line-height: 1.6;
+overflow: hidden;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+border: 1px solid rgba(255, 255, 255, 0.3);
+
+/* Gradiante onda moviendose background */
+background-image: 
+  linear-gradient(to bottom, rgba(255,249,196,0.7) 0%, rgba(255,255,255,0) 20%),
+  url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg'><path d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%23fff9c4'/><path d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23fff9c4'/><path d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23fff9c4'/></svg>");
+background-repeat: repeat-x;
+background-position: top;
+background-size: 1200px 120px;
+
+/*  Animacion para la onda */
+animation: waveAnimation 12s linear infinite;
+}
+
+.mate-contenedor-ola:hover {
+transform: translateY(-5px);
+box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes waveAnimation {
+0% { background-position-x: 0; }
+100% { background-position-x: 1200px; }
+}
+
+.mate-contenedor-ola input[type='radio'] + label {
+display: inline-block;
+padding: 12px 25px;
+margin: 10px 5px;
+border-radius: 50px;
+background-color: #f8f9fa;
+border: 2px solid #e2e8f0;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.mate-contenedor-ola input[type='radio']:checked + label {
+background-color: #fff9c4;
+border-color: #fbc02d;
+color: #5d4037;
+font-weight: 500;
+}
+
+.mate-contenedor-ola input[type='radio'] + label:hover {
+background-color: #f1f5f9;
+transform: translateY(-2px);
+}
+
+.mate-contenedor-burbuja {
+background-color: rgba(255, 255, 255, 0.95);
+padding: 40px 30px;
+border-radius: 18px;
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+max-width: 800px;
+width: 90%;
+margin: 60px auto;
+text-align: center;
+font-size: 1.2rem;
+color: #2d3748;
+position: relative;
+z-index: 10;
+line-height: 1.6;
+overflow: hidden;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+border: 1px solid rgba(255, 255, 255, 0.3);
+
+/* Efecto background nube */
+background-image: 
+  radial-gradient(circle at 20% 30%, rgba(255,249,196,0.3) 0%, transparent 15%),
+  radial-gradient(circle at 80% 70%, rgba(255,249,196,0.3) 0%, transparent 15%),
+  radial-gradient(circle at 40% 60%, rgba(255,249,196,0.3) 0%, transparent 15%),
+  radial-gradient(circle at 60% 20%, rgba(255,249,196,0.3) 0%, transparent 15%);
+background-size: 200% 200%;
+animation: floatBubbles 15s ease infinite;
+}
+
+@keyframes floatBubbles {
+0% { background-position: 0% 0%; }
+25% { background-position: 100% 50%; }
+50% { background-position: 50% 100%; }
+75% { background-position: 0% 50%; }
+100% { background-position: 0% 0%; }
+}
+
+/* Burbujas flotantes */
+.mate-contenedor-burbuja::before,
+.mate-contenedor-burbuja::after {
+content: '';
+position: absolute;
+background-color: rgba(255, 249, 196, 0.6);
+border-radius: 50%;
+z-index: -1;
+animation: float 8s ease-in-out infinite;
+}
+
+.mate-contenedor-burbuja::before {
+width: 80px;
+height: 80px;
+top: -20px;
+left: -20px;
+animation-delay: 0.5s;
+}
+
+.mate-contenedor-burbuja::after {
+width: 120px;
+height: 120px;
+bottom: -30px;
+right: -30px;
+}
+
+@keyframes float {
+0% { transform: translateY(0) rotate(0deg); }
+50% { transform: translateY(-20px) rotate(10deg); }
+100% { transform: translateY(0) rotate(0deg); }
+}
+
+.mate-contenedor-burbuja input[type='radio'] + label {
+display: inline-block;
+padding: 12px 25px;
+margin: 10px 5px;
+border-radius: 50px;
+background-color: #f8f9fa;
+border: 2px solid #e2e8f0;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.mate-contenedor-burbuja input[type='radio']:checked + label {
+background-color: #fff9c4;
+border-color: #fbc02d;
+color: #5d4037;
+font-weight: 500;
+}
+
+.mate-contenedor-burbuja input[type='radio'] + label:hover {
+background-color: #f1f5f9;
+transform: translateY(-2px);
+}
+
+.mate-contenedor-burbuja:hover {
+transform: translateY(-5px);
+box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.mate-contenedor-nubes {
+background-color: rgba(255, 255, 255, 0.95);
+padding: 40px 30px;
+border-radius: 18px;
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+max-width: 800px;
+width: 90%;
+margin: 60px auto;
+text-align: center;
+font-size: 1.2rem;
+color: #2d3748;
+position: relative;
+z-index: 10;
+line-height: 1.6;
+overflow: hidden;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+border: 1px solid rgba(255, 255, 255, 0.3);
+
+/* Nube background efectos */
+background-image: 
+  radial-gradient(circle at 20% 30%, rgba(173, 216, 230, 0.2) 0%, transparent 25%),
+  radial-gradient(circle at 80% 70%, rgba(173, 216, 230, 0.2) 0%, transparent 25%),
+  radial-gradient(circle at 40% 60%, rgba(173, 216, 230, 0.2) 0%, transparent 25%),
+  radial-gradient(circle at 60% 20%, rgba(173, 216, 230, 0.2) 0%, transparent 25%);
+background-size: 200% 200%;
+animation: floatClouds 20s ease infinite;
+}
+
+@keyframes floatClouds {
+0% { background-position: 0% 0%; }
+25% { background-position: 100% 30%; }
+50% { background-position: 50% 80%; }
+75% { background-position: 0% 50%; }
+100% { background-position: 0% 0%; }
+}
+
+.mate-contenedor-nubes::before,
+.mate-contenedor-nubes::after,
+.mate-contenedor-nubes .nubecita {
+content: '';
+position: absolute;
+background-color: rgba(173, 216, 230, 0.4);
+border-radius: 50%;
+z-index: -1;
+filter: blur(5px);
+animation: float 10s ease-in-out infinite;
+}
+
+.mate-contenedor-nubes::before {
+width: 100px;
+height: 60px;
+top: -15px;
+left: -30px;
+border-radius: 50px;
+animation-delay: 0.3s;
+}
+
+.mate-contenedor-nubes::after {
+width: 150px;
+height: 80px;
+bottom: -20px;
+right: -40px;
+border-radius: 70px;
+}
+
+/* Elementos adicionales */
+.mate-contenedor-nubes .nubecita {
+width: 80px;
+height: 50px;
+top: 50%;
+left: 20%;
+border-radius: 40px;
+animation-delay: 1s;
+animation-duration: 12s;
+}
+
+.mate-contenedor-nubes .nubecita:nth-child(2) {
+width: 120px;
+height: 70px;
+top: 30%;
+left: 70%;
+animation-delay: 1.5s;
+}
+
+@keyframes float {
+0% { 
+  transform: translateY(0) translateX(0);
+  opacity: 0.8;
+}
+50% { 
+  transform: translateY(-15px) translateX(10px);
+  opacity: 1;
+}
+100% { 
+  transform: translateY(0) translateX(0);
+  opacity: 0.8;
+}
+}
+
+/* Botones tematica nube */
+.mate-contenedor-nubes input[type='radio'] + label {
+display: inline-block;
+padding: 12px 25px;
+margin: 10px 5px;
+border-radius: 50px;
+background-color: #f8f9fa;
+border: 2px solid #e2e8f0;
+cursor: pointer;
+transition: all 0.3s ease;
+background-color: rgba(230, 240, 255, 0.8);
+}
+
+.mate-contenedor-nubes input[type='radio']:checked + label {
+background-color: #b3e0ff;
+border-color: #89c2f5;
+color: #2d3748;
+font-weight: 500;
+}
+
+.mate-contenedor-nubes input[type='radio'] + label:hover {
+background-color: #d4ebff;
+transform: translateY(-2px);
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto nubes en el hover  */
+.mate-contenedor-nubes:hover {
+transform: translateY(-5px);
+box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+background-color: rgba(255, 255, 255, 0.98);
+}
+
+.mate-contenedor-rayos {
+background-color: rgba(255, 253, 245, 0.98);
+padding: 40px 30px;
+border-radius: 18px;
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+max-width: 800px;
+width: 90%;
+margin: 60px auto;
+text-align: center;
+font-size: 1.2rem;
+color: #5a4a3a;
+position: relative;
+z-index: 10;
+line-height: 1.6;
+overflow: hidden;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+border: 1px solid rgba(255, 236, 179, 0.5);
+
+/* Rayos de sol gradient background */
+background-image: 
+  radial-gradient(circle at 80% 20%, rgba(255, 245, 158, 0.3) 0%, transparent 25%),
+  linear-gradient(to bottom, rgba(255, 249, 196, 0.2), rgba(255, 253, 245, 0.9));
+}
+
+/* Sol animado  */
+.mate-contenedor-rayos::before {
+content: '';
+position: absolute;
+width: 80px;
+height: 80px;
+top: -20px;
+right: -20px;
+background: radial-gradient(circle, #fff176 30%, transparent 70%);
+border-radius: 50%;
+z-index: -1;
+animation: pulse 4s ease-in-out infinite;
+filter: blur(1px);
+}
+
+/* Rayos de sol */
+.mate-contenedor-rayos::after {
+content: '';
+position: absolute;
+top: -50px;
+right: -50px;
+width: 150px;
+height: 150px;
+background: 
+  repeating-conic-gradient(
+    from 0deg,
+    rgba(255, 236, 179, 0.7) 0deg 10deg,
+    transparent 10deg 20deg
+  );
+z-index: -2;
+animation: rotate 20s linear infinite;
+border-radius: 50%;
+}
+
+@keyframes pulse {
+0%, 100% { transform: scale(1); opacity: 0.8; }
+50% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes rotate {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
+50% { transform: translateY(-20px) translateX(10px) scale(1.1); opacity: 1; }
+100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
+}
+
+/* Rayos de sol botones tematicos */
+.mate-contenedor-rayos input[type='radio'] + label {
+display: inline-block;
+padding: 12px 25px;
+margin: 10px 5px;
+border-radius: 50px;
+background-color: rgba(255, 241, 118, 0.3);
+border: 2px solid rgba(255, 213, 79, 0.5);
+cursor: pointer;
+transition: all 0.3s ease;
+color: #5a4a3a;
+}
+
+.mate-contenedor-rayos input[type='radio']:checked + label {
+background-color: rgba(255, 213, 79, 0.7);
+border-color: #ffca28;
+color: #5a4a3a;
+font-weight: 500;
+box-shadow: 0 2px 8px rgba(255, 196, 0, 0.3);
+}
+
+.mate-contenedor-rayos input[type='radio'] + label:hover {
+background-color: rgba(255, 236, 179, 0.6);
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(255, 196, 0, 0.2);
+}
+
+.mate-contenedor-rayos:hover {
+transform: translateY(-5px);
+box-shadow: 0 12px 40px rgba(255, 196, 0, 0.15);
+}
+
+/* ------------------------------------------ Estilos para la area de dibujo ------------------------------------------ */
+/* --- estilos para todas las paginas html --- */
+.btn_dibujo{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  width:64px;
+  height:64px;
+  border:none;
+  border-radius:50%;
+  background:#ff6f61;
+  box-shadow:0 4px 10px rgba(0,0,0,.25);
+  cursor:pointer;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.btn_dibujo svg{width:32px;height:32px;fill:#fff}
+
+/* --- Pantalla completa semi transparente para area de dibujo--- */
+.dibujo-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+.dibujo-overlay.active{display:flex}
+
+/* --- Panel/ area de dibujo con botones--- */
+.dibujo-panel{
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
+  text-align:center;
+}
+.dibujo-panel canvas{
+  border:2px solid #000;
+  touch-action:none;  
+}
+.dibujo-panel button{
+  margin:8px;
+  padding:8px 18px;
+  font-size:16px;
+  border-radius:6px;
+  border:none;
+  background:#ffd966;
+  cursor:pointer;
+}
+
+/*  Reestaurar */
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+/* -------------------------- Juego de Matemáticas ------------------------------------- */
+.mate-contenedor-juego {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 90%;
+  margin: 30px auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+  position: relative;
+  z-index: 10;
+  line-height: 1.6;
+}
+
+.h1-juego {
+  color: #1E88E5;
+  font-size: 2.2rem;
+  margin: 0 0 20px;
+  text-align: center;
+  font-family: 'Baloo 2', cursive;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.juego-controls {
+  margin: 20px auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.juego-btn {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Baloo 2', cursive;
+  min-width: 160px;
+}
+
+.juego-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.juego-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.juego-btn-start {
+  background-color: #27ae60;
+  color: white;
+}
+
+.juego-btn-stop {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.juego-btn-restart {
+  background-color: #2980b9;
+  color: white;
+  margin-top: 15px;
+}
+
+.juego-board {
+  width: 400px;
+  height: 500px;
+  margin: 20px auto;
+  position: relative;
+  background: #BBDEFB;
+  border: 3px solid #FFD600;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+
+.jugador-estilo {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 20px;
+  left: 175px;
+  background: #FFD600 center/contain no-repeat;
+  border-radius: 50%;
+  border: 2px solid #FFAB00;
+  transition: left 0.1s linear;
+  z-index: 10;
+}
+
+.operacion {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background: #FFD600;
+  color: #1E88E5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  border: 2px solid #FFAB00;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  font-family: 'Baloo 2', cursive;
+  z-index: 5;
+  transition: top 0.05s linear;
+}
+
+#puntaje{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  color: #FF6D00;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-family: 'Baloo 2', cursive;
+  z-index: 20;
+}
+
+
+#fin-juego {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(30, 136, 229, 0.95);
+  color: #FFD600;
+  padding: 30px;
+  border-radius: 15px;
+  display: none;
+  text-align: center;
+  width: 80%;
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+  border: 3px solid #FFD600;
+  z-index: 30;
+}
+
+.fin-juego h2 {
+  color: #FFD600;
+  margin-top: 0;
+  font-size: 2rem;
+  font-family: 'Baloo 2', cursive;
+}
+
+.puntaje-final {
+  font-size: 1.5rem;
+  margin: 15px 0;
+  color: white;
+  font-family: 'Baloo 2', cursive;
+  font-weight: bold;
+}

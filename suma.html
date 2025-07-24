@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suma</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            cursor: url('fotos/lapiz.png'), auto;
+        }
+    </style>
+</head>
+<body>
+  <nav>
+    <ul class="sidebar">
+      <li onclick="hideSidebar()">
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">
+            <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+          </svg>
+        </a>
+      </li>
+      <li><a href="index.html">Inicio</a></li>
+      <li class="nav-dropdown">
+        <a href="#" onclick="toggleDropdown(event, this.parentElement)">Revisión</a>
+        <div class="nav-dropdown-contenido">
+          <a href="suma.html">Suma</a>
+          <a href="restas.html">Resta</a>
+          <a href="multi.html">Multiplacion</a>
+          <a href="division.html">División</a>
+          <a href="juego.html">Juego</a>
+        </div>
+      </li>
+    </ul>
+    <ul>
+      <li class="hideOnMobile">
+        <a href="#"><img src="fotos/logo.png" alt="Logo" class="logo-img"></a>
+      </li>
+      <li class="hideOnMobile"><a href="index.html">Inicio</a></li>
+      <li class="hideOnMobile nav-dropdown">
+        <a href="#" onclick="toggleDropdown(event, this.parentElement)">Revisión</a>
+        <div class="nav-dropdown-contenido">
+          <a href="suma.html">Suma</a>
+          <a href="restas.html">Resta</a>
+          <a href="multi.html">Multiplacion</a>
+          <a href="division.html">División</a>
+          <a href="juego.html">Juego</a>
+        </div>
+      </li>
+      <li class="menu-boton" onclick="showSidebar()">
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">
+            <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+ <button id="openDrawing" class="btn_dibujo" aria-label="Abrir zona de dibujo">
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 
+            7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a1 1 0 0 0-1.41
+            0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+    </svg>
+  </button>
+   <div id="drawingOverlay" class="dibujo-overlay">
+    <div class="dibujo-panel">
+      <h2>¡Dibuja si necesitas ayuda para contar!</h2>
+      <canvas id="drawingBoard" width="400" height="300"></canvas><br>
+      <button id="clearCanvas">Limpiar</button>
+      <button id="closeDrawing">Cerrar</button>
+    </div>
+  </div>
+
+   <div class="mate-contenedor-suma">
+    <h1 class="mate-titulo">La suma o adición</h1>
+    <p class="math-description">Sumar es juntar dos o más números para saber cuánto hay en total.</p>
+    <div class="ejemplo-seccion-suma">
+      <h2 class="ejemplo-titulo-suma">Ejemplo:</h2>
+      <p class="ejemplo-texto-suma">Si tienes 1 manzana y te dan 2 despues.<br> ¿Cuántas tienes en total?</p>
+      <div class="mate-ecuacion">1 + 2 = 3</div>
+      <div class="foto_ecuacion_suma">
+        <img src="fotos/manzana.png" alt="Manzanita" class="manzanita">
+        <img src="fotos/manzana.png" alt="Manzanita" class="manzanita">
+        <img src="fotos/manzana.png" alt="Manzanita" class="manzanita">
+      </div>
+    </div>
+    
+    <div class="ejemplo-seccion-suma-color">
+      <h2 class="ejemplo-titulo-suma-color">Regla basica:</h2>
+      <p class="ejemplo-texto-suma-color">Empieza desde el número más grande.<br>   
+          Ejemplo: 7 + 2 → empieza en 7 y cuenta 2 más: 8, 9 <br>
+                    
+          7 + 2 = 9 <br>
+                    
+          Si es una suma grande <br>
+                    
+          Escribe los números uno debajo del otro: <br>
+                    
+          Ejemplo : 14 + 23  = ?  <br>
+          🤔 Cual es mas grande? 23! <br>
+                    
+          23 <br> 
+        + 14 <br>
+          _____ <br>
+          37<br>
+                     
+          3 + 4 = 7 <br>
+          2 + 1 = 3 <br>
+      </p>
+      <div class="mate-ecuacion"> 23 + 14 = 37</div>
+      <img src="fotos/mas.png" alt="suma" class="suma">
+    </div>
+    <p class="tablas-intro">Suma! Dale clic a la carta para ver la respuesta</p>
+    <section class="carousel">
+      <button class="carousel__btn" id="prev" aria-label="Carta anterior">‹</button>
+      <div class="carousel__viewport">
+        <div class="carousel__track">
+           <article class="card">
+            <div class="card__inner">
+              <div class="card__face card__face--front">
+                <h2 class="card__title">Ejemplo 1</h2>
+                <p class="card__body">¿Cuántos dulces son?</p>
+                <img src="fotos/dulces.png" alt="Dulces" class="dulces_foto">
+                <h5>+</h5>
+                <img src="fotos/dulces.png" alt="Dulces" class="dulces_foto">
+              </div>
+              <div class="card__face card__face--back">
+                <h2 class="card__title">Respuesta</h2>
+                <p class="card__body">¡Son <b>4</b> dulces!</p>
+              </div>
+            </div>
+          </article>
+          
+           <article class="card">
+            <div class="card__inner">
+              <div class="card__face card__face--front">
+                <h2 class="card__title">Ejemplo 2</h2>
+                <p class="card__body">¿Cuanto es?</p>
+                <h2>6</h2>
+                <h5>+</h5>
+                <h2>5</h2>
+              </div>
+              <div class="card__face card__face--back">
+                <h2 class="card__title">Respuesta</h2>
+                <p class="card__body">¡Es <b>11</b>!</p>
+              </div>
+            </div>
+          </article>
+       
+           <article class="card">
+            <div class="card__inner">
+              <div class="card__face card__face--front">
+                <h2 class="card__title">Ejemplo 3</h2>
+                <p class="card__body">¿Cuántos dulces son?</p>
+                <img src="fotos/dulce.png" alt="Dulces" class="dulces_foto">
+                <h5>+</h5>
+                <img src="fotos/dulces.png" alt="Dulces" class="dulces_foto">
+              </div>
+              <div class="card__face card__face--back">
+                <h2 class="card__title">Respuesta</h2>
+                <p class="card__body">¡Son <b>7</b> dulces!</p>
+              </div>
+            </div>
+          </article>
+          
+           <article class="card">
+            <div class="card__inner">
+              <div class="card__face card__face--front">
+                <h2 class="card__title">Ejemplo 4</h2>
+                <p class="card__body">¿Cuanto es?</p>
+                <h2>4</h2>
+                <h5>+</h5>
+                <h2>5</h2>
+              </div>
+              <div class="card__face card__face--back">
+                <h2 class="card__title">Respuesta</h2>
+                <p class="card__body">¡Es <b>9</b>!</p>
+              </div>
+            </div>
+          </article>
+          
+           <article class="card">
+            <div class="card__inner">
+              <div class="card__face card__face--front">
+                <h2 class="card__title">Ejemplo 5</h2>
+                <p class="card__body">¿Cuántas flores son?</p>
+                <img src="fotos/flores.png" alt="Dulces" class="dulces_foto">
+                <h5>+</h5>
+                <img src="fotos/flor.png" alt="Dulces" class="dulces_foto">
+              </div>
+              <div class="card__face card__face--back">
+                <h2 class="card__title">Respuesta</h2>
+                <p class="card__body">¡Son <b>12</b> flores!</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <button class="carousel__btn" id="next" aria-label="Carta siguiente">›</button>
+    </section> 
+
+   <div class="mate-contenedor-ola">
+    <h2 class="ejemplo-titulo-suma">¡Practica con ejercicios!</h2>
+    <div id="contenedor-ejercicios" class="ejercicios-container"></div>
+  </div>
+
+    <div class="mate-contenedor-ola">
+      <h2 class="ejemplo-titulo-suma">¿Cual es la respuesta correcta?</h2>
+      <div id="contenedor-multichoice" class="ejercicios-container"></div>
+    </div>
+  </div>
+
+    <script>
+        function showSidebar(){
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'flex';
+        }
+        function hideSidebar(){
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'none';
+        }
+    
+        window.addEventListener('resize', () => {
+            const sidebar = document.querySelector('.sidebar');
+            if (window.innerWidth > 800) {
+                sidebar.style.display = 'none';
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/adicion.js"></script>
+    <script src="js/cartas_carousel.js"></script>
+</body>
+</html>

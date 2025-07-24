@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Division</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            cursor: url('fotos/lapiz.png'), auto;
+        }
+    </style> 
+</head>
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hideSidebar()">
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">
+                        <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+                    </svg>
+                </a>
+            </li>
+            <li><a href="index.html">Inicio</a></li>
+            <li class="nav-dropdown">
+                <a href="#" onclick="toggleDropdown(event, this.parentElement)">Revisión</a>
+                <div class="nav-dropdown-contenido">
+                    <a href="suma.html">Suma</a>
+                    <a href="restas.html">Resta</a>
+                    <a href="multi.html">Multiplacion</a>
+                    <a href="division.html">División</a>
+                    <a href="juego.html">Juego</a>
+                </div>
+            </li>
+        </ul>
+        <ul>
+            <li class="hideOnMobile">
+                <a href="#"><img src="fotos/logo.png" alt="Logo" class="logo-img"></a>
+            </li>
+            <li class="hideOnMobile"><a href="index.html">Inicio</a></li>
+            <li class="hideOnMobile nav-dropdown">
+                <a href="#" onclick="toggleDropdown(event, this.parentElement)">Revisión</a>
+                <div class="nav-dropdown-contenido">
+                    <a href="suma.html">Suma</a>
+                    <a href="restas.html">Resta</a>
+                    <a href="multi.html">Multiplacion</a>
+                    <a href="division.html">División</a>
+                    <a href="juego.html">Juego</a>
+                </div>
+            </li>
+            <li class="menu-boton" onclick="showSidebar()">
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">
+                        <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+ <button id="openDrawing" class="btn_dibujo" aria-label="Abrir zona de dibujo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 
+            7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a1 1 0 0 0-1.41
+            0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+    </svg>
+  </button>
+  
+   <div id="drawingOverlay" class="dibujo-overlay">
+    <div class="dibujo-panel">
+      <h2>¡Dibuja si necesitas ayuda para contar!</h2>
+      <canvas id="drawingBoard" width="400" height="300"></canvas><br>
+      <button id="clearCanvas">Limpiar</button>
+      <button id="closeDrawing">Cerrar</button>
+    </div>
+  </div>
+  
+  <div class="mate-contenedor-division">
+    <h1 class="mate-titulo">La division</h1>
+    <p class="math-description">La división es cuando repartimos algo en partes iguales.</p>
+    <div class="ejemplo-seccion-division">
+        <h2 class="ejemplo-titulo-division">Ejemplo:</h2>
+        <p class="ejemplo-texto-division"> Si tienes 6 manzanas y las quieres compartir con 3 amigos, <br>
+        ¿Cuántas manzanas le tocan a cada uno?<br>
+        <div class="mate-ecuacion"> 6 ÷ 3 = 2 </div>
+        <div class="foto_ecuacion_division">
+            <img src="fotos/manzana.png" alt="Manzanita" class="manzanita"> <img src="fotos/manzana.png" alt="Manzanita" class="manzanita"><h6> 2 para mi</h6> <br>
+            <img src="fotos/manzana.png" alt="Manzanita" class="manzanita"> <img src="fotos/manzana.png" alt="Manzanita" class="manzanita"><h6> 2 para Dani</h6> <br>
+            <img src="fotos/manzana.png" alt="Manzanita" class="manzanita"> <img src="fotos/manzana.png" alt="Manzanita" class="manzanita"><h6> 2 para Eric</h6> <br>
+        </div>
+    </div>
+    
+    <div class="ejemplo-seccion-division-color">
+        <h2 class="ejemplo-titulo-division-color">Regla basica:</h2>
+        <p class="ejemplo-texto-division-color"><br>
+        <strong>¿Qué hay que hacer?</strong><br>
+        - Dividir el número grande (dividendo) entre el número pequeño (divisor).<br>
+        - Buscar cuántas veces cabe el divisor en el dividendo.<br>
+        - Si no cabe exactamente, se puede seguir dividiendo usando decimales.<br><br>
+        <strong>¿Cómo se hace una división?</strong><br>
+        1. Miramos el número que queremos dividir (dividendo).<br>
+        2. Vemos cuántas veces cabe el divisor en el dividendo.<br>
+        3. Restamos esa cantidad multiplicada por el divisor.<br>
+        4. Bajamos el siguiente número y repetimos hasta que no quede nada o sigamos con decimales.<br><br>
+        Por ejemplo:<br>
+        <div class="mate-ecuacion">12 ÷ 5 = 2.4</div>
+        Esto quiere decir que 5 cabe 2 veces en 12, <br>
+        y sobra un poquito más que podemos escribir con un número después de la coma para saber cuánto es.
+        </p>
+        <img src="fotos/dividir.png" alt="resta" class="suma">
+    </div>
+    <p class="math-description">Mira el video para seguir aprendiendo.</p>
+
+    <div class="video-container">
+        <iframe 
+            width="80%" 
+            height="315" 
+            src="https://www.youtube.com/embed/mQ4wKV9_pZs" 
+            title="YouTube video" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+        </iframe>
+    </div>
+              
+
+    <div class="mate-contenedor-burbuja">
+        <h2 class="ejemplo-titulo-division">¿Cual es la respuesta correcta?</h2>
+        <div id="contenedor-multichoice" class="ejercicios-container"></div>
+    </div>
+  
+    <div class="mate-contenedor-rayos">
+        <section id="ejercicioPizza" class="ejercicio-pizza">
+            <h2 class="ejemplo-titulo-division">¡Reparte la pizza!</h2>
+            <p class="ejemplo-texto">
+                Si tenemos <strong>1 pizza con 8 rebanadas</strong> y somos <strong>4 amigos</strong>,
+                ¿cuántas rebanadas recibe cada uno?
+            </p>
+            <img src="fotos/pizza.png"
+            alt="Pizza dividida en 8"
+            class="pizza-img">
+            
+            <input id="inputPizza"
+            type="number"
+            placeholder="Tu respuesta"
+            min="1"
+            class="pizza-input">
+
+            <button id="btnPizzaOK" class="division-btn">Verificar</button>
+    
+            <p id="msgPizza" class="feedback-text"></p>
+            <h7>redondear a 2 decimales</h7>
+        </section>
+    </div>
+    <script>
+        function showSidebar(){
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'flex';
+        }
+        function hideSidebar(){
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'none';
+        }
+    
+        window.addEventListener('resize', () => {
+            const sidebar = document.querySelector('.sidebar');
+            if (window.innerWidth > 800) {
+                sidebar.style.display = 'none';
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/division.js"></script>
+</body>
+</html>
