@@ -5,7 +5,7 @@ Fue creado usando HTML, CSS y JavaScript, y está alojado en GitHub Pages.
 
 ## Enlace
 
-Puedes ver la página en vivo aquí: [https://https://ccandanedosanchez.github.io/mate_escolar/](https://ccandanedosanchez.github.io/mate_escolar/)
+Puedes ver la página en vivo aquí: [https://ccandanedosanchez.github.io/mate_escolar/]
 
 ## Sobre el proyecto
 
